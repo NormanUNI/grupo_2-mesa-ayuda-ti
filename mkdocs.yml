@@ -1,0 +1,60 @@
+site_name: Mesa de ayuda interna de TI
+site_description: Trabajo integrador - Ciberseguridad de Inteligencia Artificial - Grupo Ciber2026
+site_url: https://normanuni.github.io/grupo_2-mesa-ayuda-ti/
+repo_url: https://github.com/NormanUNI/grupo_2-mesa-ayuda-ti
+repo_name: grupo_2-mesa-ayuda-ti
+docs_dir: docs
+use_directory_urls: true
+
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+
+nav:
+  - Inicio: index.md
+  - 1. Ficha del sistema: ficha.md
+  - 2. Arquitectura: arquitectura.md
+  - 3. Modelo de amenazas: modelo-de-amenazas.md
+  - 4. Priorizacion: priorizacion.md
+  - 5. Controles y riesgo residual: controles.md
+  - 6. Evaluacion adversarial: evaluacion.md
+  - 7. Clasificacion regulatoria: regulatorio.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

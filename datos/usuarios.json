@@ -1,0 +1,42 @@
+{
+  "u-001": {
+    "nombre": "Ana Quispe",
+    "usuario": "ana.quispe",
+    "rol": "colaborador",
+    "area": "Comercial",
+    "clasificaciones_permitidas": [
+      "publico"
+    ]
+  },
+  "u-002": {
+    "nombre": "Bruno Salas",
+    "usuario": "bruno.salas",
+    "rol": "soporte_n1",
+    "area": "Mesa de ayuda",
+    "clasificaciones_permitidas": [
+      "publico",
+      "interno"
+    ]
+  },
+  "u-003": {
+    "nombre": "Carla Mendez",
+    "usuario": "carla.mendez",
+    "rol": "soporte_n2",
+    "area": "Mesa de ayuda",
+    "clasificaciones_permitidas": [
+      "publico",
+      "interno"
+    ]
+  },
+  "u-004": {
+    "nombre": "Diego Rojas",
+    "usuario": "diego.rojas",
+    "rol": "administrador",
+    "area": "Plataforma",
+    "clasificaciones_permitidas": [
+      "publico",
+      "interno",
+      "restringido"
+    ]
+  }
+}

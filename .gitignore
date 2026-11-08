@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+site/
+.DS_Store
+.ipynb_checkpoints/
+datos/memoria/
+registros/*.jsonl
+!registros/muestra-*.jsonl
