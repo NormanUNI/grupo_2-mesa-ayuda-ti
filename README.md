@@ -43,17 +43,53 @@ red ni llave de API:
 python -m src.cli --consulta "Cual es el plazo para reportar un incidente?"
 ```
 
-Para usar la API de Gemini en su nivel gratuito:
+### Usar un modelo real
+
+Hay tres proveedores. `eco` es el valor por defecto y no necesita nada.
+
+| Proveedor | Qué es | Llave |
+| --- | --- | --- |
+| `eco` | Modelo local de prueba. Sin red ni llave | — |
+| `deepseek` | API de DeepSeek, formato compatible con OpenAI | platform.deepseek.com |
+| `gemini` | API de Gemini, vía Interactions API | aistudio.google.com/apikey |
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env     # colocar la llave en GEMINI_API_KEY
-export PROVEEDOR_MODELO=gemini
-python -m src.cli
+cp .env.example .env
 ```
 
-La llave vive en `.env`, excluido por `.gitignore`, y nunca entra al historial
-del repositorio.
+Abre `.env` y completa el proveedor que vayas a usar:
+
+```
+PROVEEDOR_MODELO=deepseek
+DEEPSEEK_API_KEY=tu-llave
+```
+
+Luego corre normalmente:
+
+```bash
+python -m src.cli --consulta "Cual es el plazo para reportar un incidente?"
+```
+
+La primera línea de salida confirma qué modelo quedó activo.
+
+**La llave vive solo en `.env`**, excluido por `.gitignore`, y nunca entra al
+historial del repositorio. No la pongas en `.env.example`, que sí se versiona, ni
+la compartas por chat o captura de pantalla. Si una llave se expone, el
+procedimiento del curso es revocarla, reemplazarla y documentarlo como una fila
+del modelo de amenazas.
+
+El nombre del modelo también vive en `.env` (`MODELO_DEEPSEEK`, `MODELO_GEMINI`)
+porque los proveedores retiran versiones con frecuencia: así se cambia sin tocar
+código.
+
+### Desde el navegador, con Colab
+
+Sin instalar nada:
+
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NormanUNI/grupo_2-mesa-ayuda-ti/blob/main/notebooks/mesa_de_ayuda.ipynb)
+
+En Colab la llave va en el panel de secretos, no en un archivo.
 
 ## Cómo correrlo
 
@@ -74,7 +110,7 @@ Opciones:
 | --- | --- |
 | `--consulta` | Una sola consulta en lugar del modo interactivo |
 | `--usuario` | Usuario sintético, de `u-001` a `u-004`. Por defecto `u-001` |
-| `--proveedor` | `eco` (local, sin red) o `gemini` |
+| `--proveedor` | `eco` (local, sin red), `deepseek` o `gemini` |
 | `--controles` | Activa mínimo privilegio, aislamiento de memoria y lista blanca |
 | `--corrida` | Nombre del archivo de registro |
 
@@ -109,11 +145,12 @@ src/                       el producto
   registro.py              registro de eventos en JSONL
   corpus.py                carga del corpus
   recuperacion.py          índice BM25
-  modelo.py                proveedores de modelo: gemini y eco
+  modelo.py                proveedores de modelo: eco, deepseek y gemini
   herramientas.py          catálogo del agente
   memoria.py               memoria entre sesiones
   asistente.py             orquestador
   cli.py                   línea de comandos
+notebooks/                 notebook de Colab
 controles/                 controles implementados por el grupo (sesión 4 en adelante)
 datos/
   corpus/                  14 documentos sintéticos
