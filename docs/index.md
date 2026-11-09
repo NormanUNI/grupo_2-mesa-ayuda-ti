@@ -41,7 +41,26 @@ qué tan efectiva resulta esa defensa.
 | 7 | Controles implementados y medidos, clasificación regulatoria | Pendiente |
 | 8 | Etiqueta `entrega-final` y sustentación | Pendiente |
 
-## Cómo correrlo
+## Probarlo
+
+El asistente **no corre en esta página**. GitHub Pages entrega archivos estáticos y no
+ejecuta Python, y el enunciado del trabajo restringe el alcance a un prototipo local o
+en Colab, sin desplegarlo en internet. Esta página es la documentación del producto, no
+el producto.
+
+Hay dos formas de usarlo.
+
+### En el navegador, con Colab
+
+Sin instalar nada y sin llave de API:
+
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NormanUNI/grupo_2-mesa-ayuda-ti/blob/main/notebooks/mesa_de_ayuda.ipynb)
+
+El notebook clona el repositorio, carga el asistente y trae consultas de ejemplo,
+incluidas las dos amenazas que ya se pueden demostrar con el producto en su estado
+actual: recuperación sin mínimo privilegio y abuso de herramientas del agente.
+
+### En tu máquina
 
 ```bash
 git clone https://github.com/NormanUNI/grupo_2-mesa-ayuda-ti.git
@@ -49,5 +68,5 @@ cd grupo_2-mesa-ayuda-ti
 python -m src.cli --consulta "Cual es el plazo para reportar un incidente?"
 ```
 
-Corre sin instalar nada y sin llave de API en su modo de prueba local. Las
-instrucciones completas están en el README del repositorio.
+Requiere Python 3.10 o superior. Corre sin instalar nada y sin llave de API en su modo
+de prueba local. Las instrucciones completas están en el README del repositorio.
