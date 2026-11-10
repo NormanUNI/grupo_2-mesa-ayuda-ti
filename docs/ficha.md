@@ -30,7 +30,7 @@ queda fuera por decisión del grupo.
 
 | Componente | Implementación | Archivo |
 | --- | --- | --- |
-| **Modelo de lenguaje que consulta documentos** (obligatorio) | Recuperación BM25 sobre el corpus; el modelo recibe los documentos como contexto. Proveedor configurable: API de Gemini en su nivel gratuito, o un modelo local de prueba sin red | `src/recuperacion.py`, `src/modelo.py` |
+| **Modelo de lenguaje que consulta documentos** (obligatorio) | Recuperación BM25 sobre el corpus; el modelo recibe los documentos como contexto. Dos proveedores: la API de DeepSeek, con la que se miden los resultados, o `eco`, un modelo local de prueba sin red ni llave | `src/recuperacion.py`, `src/modelo.py` |
 | **Agente que ejecuta acciones con herramientas** | Catálogo cerrado de tres herramientas simuladas: abrir ticket, consultar ticket, restablecer acceso | `src/herramientas.py` |
 | **Memoria entre sesiones** | Historial corto por usuario, persistido en disco y recuperado al inicio de cada consulta | `src/memoria.py` |
 

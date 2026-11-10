@@ -45,13 +45,18 @@ python -m src.cli --consulta "Cual es el plazo para reportar un incidente?"
 
 ### Usar un modelo real
 
-Hay tres proveedores. `eco` es el valor por defecto y no necesita nada.
+Hay dos proveedores. `eco` es el valor por defecto y no necesita nada.
 
-| Proveedor | Qué es | Llave |
-| --- | --- | --- |
-| `eco` | Modelo local de prueba. Sin red ni llave | — |
-| `deepseek` | API de DeepSeek, formato compatible con OpenAI | platform.deepseek.com |
-| `gemini` | API de Gemini, vía Interactions API | aistudio.google.com/apikey |
+| Proveedor | Qué es | Llave | ¿Sirve para medir? |
+| --- | --- | --- | --- |
+| `eco` | Modelo local de prueba. Sin red ni llave. Cualquiera puede correrlo | — | No |
+| `deepseek` | API de DeepSeek, formato compatible con OpenAI | platform.deepseek.com | Sí |
+
+`eco` no es un modelo de lenguaje: arma la respuesta con los documentos
+recuperados y obedece a propósito cualquier instrucción que encuentre en ellos.
+Sirve para recorrer el producto sin tener una llave, no para medir. Toda cifra
+de [la evaluación](docs/evaluacion.md) debe decir con qué proveedor y qué modelo
+se obtuvo.
 
 ```bash
 pip install -r requirements.txt
@@ -79,17 +84,28 @@ la compartas por chat o captura de pantalla. Si una llave se expone, el
 procedimiento del curso es revocarla, reemplazarla y documentarlo como una fila
 del modelo de amenazas.
 
-El nombre del modelo también vive en `.env` (`MODELO_DEEPSEEK`, `MODELO_GEMINI`)
-porque los proveedores retiran versiones con frecuencia: así se cambia sin tocar
-código.
+El nombre del modelo también vive en `.env` (`MODELO_DEEPSEEK`) porque los
+proveedores retiran versiones con frecuencia: así se cambia sin tocar código.
 
 ### Desde el navegador, con Colab
 
-Sin instalar nada:
+Sin instalar nada y sin llave:
 
 [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NormanUNI/grupo_2-mesa-ayuda-ti/blob/main/notebooks/mesa_de_ayuda.ipynb)
 
-En Colab la llave va en el panel de secretos, no en un archivo.
+La sección 4 del notebook trae un **formulario**: se elige el usuario, se escribe
+la consulta y se pulsa *Preguntar*, sin tocar código.
+
+El notebook elige solo el proveedor y no hay nada que configurar al final:
+
+| En los secretos de Colab | Modelo activo |
+| --- | --- |
+| nada | `eco` |
+| un secreto `DEEPSEEK_API_KEY` con *Acceso del notebook* activado | `deepseek` |
+
+El nombre del secreto debe ser exactamente `DEEPSEEK_API_KEY`, y el interruptor
+de *Acceso del notebook* se activa por notebook, no por cuenta. En Colab la llave
+va en ese panel, nunca en un archivo ni en una celda.
 
 ## Cómo correrlo
 
@@ -110,7 +126,7 @@ Opciones:
 | --- | --- |
 | `--consulta` | Una sola consulta en lugar del modo interactivo |
 | `--usuario` | Usuario sintético, de `u-001` a `u-004`. Por defecto `u-001` |
-| `--proveedor` | `eco` (local, sin red), `deepseek` o `gemini` |
+| `--proveedor` | `eco` (local, sin red) o `deepseek` |
 | `--controles` | Activa mínimo privilegio, aislamiento de memoria y lista blanca |
 | `--corrida` | Nombre del archivo de registro |
 
@@ -145,19 +161,20 @@ src/                       el producto
   registro.py              registro de eventos en JSONL
   corpus.py                carga del corpus
   recuperacion.py          índice BM25
-  modelo.py                proveedores de modelo: eco, deepseek y gemini
+  modelo.py                proveedores de modelo: eco y deepseek
   herramientas.py          catálogo del agente
   memoria.py               memoria entre sesiones
   asistente.py             orquestador
   cli.py                   línea de comandos
 notebooks/                 notebook de Colab
-controles/                 controles implementados por el grupo (sesión 4 en adelante)
+controles/                 controles del grupo (vacío en el hito 1; se implementan entre las sesiones 4 y 7)
 datos/
   corpus/                  14 documentos sintéticos
   usuarios.json            usuarios sintéticos y permisos
 evaluacion/
-  catalogo/                ataques y consultas legítimas
-  resultados/              JSON y gráficos de cada corrida
+  correr_evaluacion.py     mide las tasas y calcula el intervalo de Wilson
+  catalogo/                ataques y consultas legítimas (vacío hasta la sesión 6)
+  resultados/              JSON y gráficos de cada corrida (vacío hasta la sesión 6)
 registros/                 muestra del registro de una corrida
 requirements.txt
 .env.example               nombres de las variables, sin valores

@@ -56,9 +56,10 @@ Sin instalar nada y sin llave de API:
 
 [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/NormanUNI/grupo_2-mesa-ayuda-ti/blob/main/notebooks/mesa_de_ayuda.ipynb)
 
-El notebook clona el repositorio, carga el asistente y trae consultas de ejemplo,
-incluidas las dos amenazas que ya se pueden demostrar con el producto en su estado
-actual: recuperación sin mínimo privilegio y abuso de herramientas del agente.
+El notebook clona el repositorio, carga el asistente y trae un formulario para
+consultarlo sin tocar código. Funciona con el modelo local de prueba, así que
+cualquiera puede abrirlo; si en los secretos de Colab hay una llave de DeepSeek,
+la detecta y responde con ese modelo.
 
 ### En tu máquina
 

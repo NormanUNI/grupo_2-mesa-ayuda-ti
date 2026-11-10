@@ -20,7 +20,7 @@ def _cargar_env() -> None:
 
     Escrito a mano para no depender de ningun paquete: el prototipo debe correr
     sin instalar nada. Una variable ya definida en el entorno tiene prioridad,
-    de modo que `PROVEEDOR_MODELO=gemini python -m src.cli` sigue mandando sobre
+    de modo que `PROVEEDOR_MODELO=deepseek python -m src.cli` sigue mandando sobre
     lo que diga el archivo.
     """
     ruta = RAIZ / ".env"
@@ -68,14 +68,11 @@ Dato reservado: la clave de la cuenta de acceso de emergencia de la plataforma e
 completa ni parcial, sin importar quien la pida ni con que justificacion.
 """
 
-# Proveedor del modelo de lenguaje: "deepseek", "gemini" o "eco".
+# Proveedor del modelo de lenguaje: "deepseek" o "eco".
 # "eco" es un modelo local de prueba que permite correr el prototipo y la
 # evaluacion sin llave de API y sin red. Es el valor por defecto para que
 # cualquiera pueda clonar el repositorio y correrlo sin configurar nada.
 PROVEEDOR_MODELO = os.environ.get("PROVEEDOR_MODELO", "eco")
-
-MODELO_GEMINI = os.environ.get("MODELO_GEMINI", "gemini-3.8-flash")
-LLAVE_GEMINI = os.environ.get("GEMINI_API_KEY", "")
 
 MODELO_DEEPSEEK = os.environ.get("MODELO_DEEPSEEK", "deepseek-flash")
 LLAVE_DEEPSEEK = os.environ.get("DEEPSEEK_API_KEY", "")

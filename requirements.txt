@@ -3,9 +3,6 @@
 # Para usar DeepSeek, que expone un formato compatible con OpenAI:
 openai>=1.0,<3
 
-# Para usar la API de Gemini:
-google-genai>=3.0,<4
-
 # Para publicar la pagina desde docs/:
 mkdocs>=1.6,<2.0
 mkdocs-material>=9.5,<10

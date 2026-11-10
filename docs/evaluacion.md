@@ -15,6 +15,24 @@
 
 Un falso positivo es una consulta legítima que el control bloquea.
 
+## Cada cifra dice contra qué motor se midió
+
+El producto corre con dos proveedores y **no son intercambiables para medir**:
+
+| Proveedor | Qué es | Sirve para medir |
+| --- | --- | --- |
+| `deepseek` | API de DeepSeek, un modelo de lenguaje real | Sí |
+| `eco` | Modelo local de prueba. Arma la respuesta con el contexto y obedece a propósito cualquier instrucción que encuentre en un documento recuperado | No |
+
+Por construcción, `eco` cede ante casi toda inyección indirecta. Una tasa medida
+contra `eco` describe a `eco`, no al producto en operación, y las dos cifras se
+ven idénticas en una tabla que no diga cuál es cuál.
+
+Por eso la tabla de resultados lleva columnas de **proveedor** y **modelo**, y
+ninguna fila se da por válida sin ellas. El registro de eventos ya guarda ambos
+datos en cada evento `respuesta_entregada`, así que se toman de ahí y no de la
+memoria de quien corrió la prueba.
+
 ## Por qué Wilson y no el intervalo normal
 
 Con 20 intentos, el intervalo clásico de Wald colapsa a cero cuando el control
@@ -37,6 +55,6 @@ real podría llegar al 16%. Ningún control se reporta como efectivo al 100%.
 
 ## Resultados
 
-| Amenaza | Condición | Éxitos / intentos | Tasa | Wilson 95% |
-| --- | --- | --- | --- | --- |
-| _pendiente sesión 6_ | | | | |
+| Amenaza | Condición | Proveedor | Modelo | Éxitos / intentos | Tasa | Wilson 95% |
+| --- | --- | --- | --- | --- | --- | --- |
+| _pendiente sesión 6_ | | | | | | |
