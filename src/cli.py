@@ -19,7 +19,7 @@ def _argumentos() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Mesa de ayuda interna de TI (prototipo)")
     p.add_argument("--consulta", help="consulta unica; sin esto arranca el modo interactivo")
     p.add_argument("--usuario", default="u-001", help="identificador del usuario sintetico (u-001 a u-004)")
-    p.add_argument("--proveedor", default=None, help="gemini o eco; por defecto, el de config")
+    p.add_argument("--proveedor", default=None, help="deepseek o eco; por defecto, el de config")
     p.add_argument("--controles", action="store_true", help="activa los tres controles")
     p.add_argument("--corrida", default=None, help="nombre del archivo de registro")
     return p.parse_args()

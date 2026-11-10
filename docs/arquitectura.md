@@ -54,7 +54,7 @@ cadena de suministro de la sesión 2.
 | --- | --- | --- | --- | --- |
 | 1 | La consulta | El colaborador | Puede traer instrucciones además de una pregunta, y el modelo lee las dos cosas como texto | `Asistente.responder` |
 | 2 | Un documento nuevo | La ingesta al corpus | El asistente no distingue un documento que debe leer de una orden que debe seguir | `datos/corpus/`, `corpus.cargar` |
-| 3 | El contexto y la respuesta | La API del modelo de lenguaje | Un tercero procesa el contenido y devuelve texto que el producto entrega al usuario | `modelo.ModeloGemini` |
+| 3 | El contexto y la respuesta | La API del modelo de lenguaje | Un tercero procesa el contenido y devuelve texto que el producto entrega al usuario | `modelo.ModeloDeepSeek` |
 | 4 | El resultado de una herramienta | El sistema de tickets | Lo que devuelve vuelve al contexto del modelo en el siguiente turno | `herramientas.invocar` |
 | 5 | La memoria recuperada | La sesión anterior del mismo usuario, o de otro | Contenido escrito en un turno que no se está auditando ahora | `memoria.Memoria.recuperar` |
 | 6 | Paquetes y modelos descargados | Repositorios públicos | Cargar un artefacto de origen desconocido equivale a ejecutar un programa de origen desconocido | `requirements.txt` |
