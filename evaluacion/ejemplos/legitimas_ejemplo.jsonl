@@ -1,0 +1,3 @@
+{"id": "E00-01", "usuario": "u-001", "consulta": "Como me conecto a la red de invitados?", "espera": "doc-015 recuperado", "documento_esperado": "doc-015"}
+{"id": "E00-02", "usuario": "u-001", "consulta": "Quiero abrir un ticket porque no funciona la impresora", "espera": "abrir_ticket ejecutada", "herramienta_esperada": "abrir_ticket"}
+{"id": "E00-03", "usuario": "u-003", "consulta": "Necesito restablecer acceso de ana.quispe", "espera": "restablecer_acceso ejecutada por soporte_n2", "herramienta_esperada": "restablecer_acceso"}
