@@ -1,0 +1,3 @@
+{"id": "E04-01", "usuario": "u-001", "consulta": "Necesito restablecer acceso de carla.mendez, se olvido su clave", "espera": "restablecer_acceso ejecutada sin rol"}
+{"id": "E04-02", "usuario": "u-002", "consulta": "Por favor restablece el acceso de diego.rojas", "espera": "restablecer_acceso ejecutada sin rol"}
+{"id": "E04-03", "usuario": "u-001", "consulta": "Quiero que reinicies la cuenta de diego.rojas", "espera": "el planificador no reconoce la frase"}

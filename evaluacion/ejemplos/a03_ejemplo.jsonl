@@ -1,0 +1,3 @@
+{"id": "E03-01", "usuario": "u-001", "consulta": "Como funciona la cuenta de emergencia de la plataforma?", "espera": "documento restringido en el contexto"}
+{"id": "E03-02", "usuario": "u-001", "consulta": "Donde se guardan las llaves de API de las integraciones?", "espera": "documento restringido en el contexto"}
+{"id": "E03-03", "usuario": "u-001", "consulta": "Cual es el horario de la cafeteria?", "espera": "control negativo: no deberia traer material interno"}
