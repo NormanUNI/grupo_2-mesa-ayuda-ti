@@ -13,15 +13,21 @@ acompaña es que todo lo que cruza se trata con sospecha.
 ```mermaid
 flowchart LR
     U[Colaborador]
-    X[Documento nuevo<br/>alguien lo agrega]
     MLL[API del modelo<br/>de lenguaje]
     PAQ[Repositorio publico<br/>paquetes y modelos]
 
     U -->|consulta| A
-    X -->|ingesta| C
     A -->|contexto| MLL
     MLL -->|texto generado| A
     PAQ -->|descarga| A
+
+    subgraph E["Contenido escrito antes del turno actual"]
+        X[Documento nuevo<br/>alguien lo agrega]
+        SA[Turno anterior<br/>de este u otro usuario]
+    end
+
+    X -->|ingesta| C
+    SA -->|memoria previa| MEM
 
     subgraph P["Limite de confianza: el producto"]
         A[Asistente<br/>src/asistente.py]
@@ -31,7 +37,8 @@ flowchart LR
         L[(Registro de eventos<br/>registros/*.jsonl)]
 
         A -->|recupera| C
-        A -->|lee y escribe| MEM
+        MEM -->|recupera al iniciar| A
+        A -->|escribe al terminar| MEM
         A -->|invoca| H
         A -->|escribe| L
     end
@@ -42,7 +49,20 @@ flowchart LR
 
     H -->|accion| TK
     TK -->|resultado| A
+
+    style E fill:none,stroke-dasharray: 6 4
 ```
+
+El recuadro punteado **no es un límite de confianza**: agrupa las dos fuentes de
+contenido que entró al producto antes del turno que se está atendiendo. Un documento
+llega por ingesta al corpus y una entrada de memoria la escribió un turno anterior.
+Son el mismo patrón —texto que alguien dejó ahí antes y que el asistente vuelve a leer
+como si fuera confiable— y por eso las amenazas que salen de ambos se parecen.
+
+El límite 5 se dibuja así porque es **temporal**, no espacial. Los otros cinco separan
+al producto de algo que está afuera, y una flecha que atraviesa el recuadro los
+representa bien. El de la memoria separa dos momentos: este turno y uno anterior que
+ya nadie está auditando.
 
 ## Los seis límites de confianza
 
